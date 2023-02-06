@@ -9,6 +9,7 @@ function trainCarAI() {
 	}
 	let scores = []
 
+	// jump to next generation by pressing "n"
 	skip = false
 	window.addEventListener("keydown", e=>{
 		if(e.key === "n") {
@@ -67,21 +68,23 @@ function trainCarAI() {
 			let scores = await run()
 			scores.sort((a, b)=>b.score - a.score)
 			console.log(`Generation ${generation} done!!! Scores: ${scores.slice(0, 3).map(x=>Math.round(x.score)).join(" - ")}`);	
-			const bestThree = scores.slice(0, 3).map(s=>cars.find(car=>car.id === s.id).nn.clone())
+			const bestThreeScores = scores.slice(0, 3)
+			const bestThreeCars = bestThreeScores.map(s=>cars.find(car=>car.id === s.id))
+			const bestThreeNetworks = bestThreeCars.map(car=>car.nn.clone())
 			for(let car of cars) {
 				carRenderer.remove(car)
 			}
 			for(let i = 0; i < 3; i++) {
 				cars[i] = new CarAI(track)
-				cars[i].nn = bestThree[i].clone()
+				cars[i].nn = bestThreeNetworks[i].clone()
 				//console.log(bestThree[i].nn.exportState());
 				//console.log(cars[i].nn.exportState());
 			}
 			for(let i = 3; i < cars.length; i++) {
 				cars[i] = new CarAI(track)
 				const car = cars[i]
-				car.nn = bestThree[i%3].clone()
-				car.nn.randomAdjust(i/(generation+1))
+				car.nn = bestThreeNetworks[i%3].clone()
+				car.nn.randomAdjust(i / (generation+1))
 			}
 		}
 	}

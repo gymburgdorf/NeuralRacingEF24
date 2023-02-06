@@ -121,7 +121,7 @@ class NeuralNetwork {
 
 
 
-function SeedRandom(state1,state2){
+function SeedRandom(state1, state2){
 	var mod1=4294967087
 	var mul1=65539
 	var mod2=4294965887

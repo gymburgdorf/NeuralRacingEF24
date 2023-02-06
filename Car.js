@@ -25,8 +25,8 @@ class Car {
 
 	move() {
 		const dt = 0.016 //framerate browser
-		const a = 15
-		const omega = 0.5
+		const a = 30
+		const omega = 1
 
 		this.v = 0.99 * this.v + a * this.acc * dt
 		this.rot = (this.rot + omega * this.steer * dt * Math.sign(this.v)) % (2*Math.PI)

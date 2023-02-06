@@ -8,7 +8,7 @@ class CarAI extends Car {
 	}
 
 	control() {
-		let scans = this.getScans()
+		let scans = this.getScans() // [0,1,3,4,5,2]
 		let results = this.nn.feedForward([...scans, this.v])
 		this.acc = -1 + 2 * clamp(results[0], 0, 1)
 		this.steer = -1 + 2 * clamp(results[1], 0, 1)
