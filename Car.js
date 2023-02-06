@@ -24,11 +24,18 @@ class Car {
 	}
 
 	move() {
-		const dt = 0.1
-		this.v = 0.99 * this.v + 0.08 * this.acc
-		this.rot = (this.rot + 0.03 * this.steer * Math.sign(this.v)) % (2*Math.PI)
-		this.x += Math.cos(this.rot) * this.v * dt
-		this.y += Math.sin(this.rot) * this.v * dt
+		const dt = 0.016 //framerate browser
+		const a = 15
+		const omega = 0.5
+
+		this.v = 0.99 * this.v + a * this.acc * dt
+		this.rot = (this.rot + omega * this.steer * dt * Math.sign(this.v)) % (2*Math.PI)
+
+		let vx = this.v * Math.cos(this.rot)
+		let vy = this.v * Math.sin(this.rot)
+		
+		this.x = this.x + vx * dt
+		this.y = this.y + vy * dt
 	}
 
 	checkCollision() {

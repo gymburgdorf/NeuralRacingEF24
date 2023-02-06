@@ -21,7 +21,7 @@
 	<script src="CarRenderer.js"></script>
 	<script src="NeuralNetwork.js"></script>
 	<script src="playAsHuman.js"></script>
-	<!--script src="trainCarAI.js"></script-->
+	<script src="trainCarAI.js"></script>
 	<script src="playRecordedCars.js"></script>
 	<script src="playTheRace.js"></script>
 	
@@ -29,8 +29,8 @@
 		const queryParams = new URLSearchParams(location.search)
 		console.log(queryParams, location.search);
 
-		if(queryParams.has("race")) {
-			playTheRace()
+		if(queryParams.has("training")) {
+			trainCarAI()
 		}
 		else if(queryParams.has("recorded")){
 			playRecordedCars()

@@ -7,7 +7,7 @@ class CarRenderer {
 		this.sprites = {}
 	}
 
-	initSprite(car, withScans, img = "car.png") {
+	initSprite(car, withScans, img = "img/car.png") {
 		let content = `<g class="car car_${car.id}" transform="translate(100 100)">
 				<title>Car ${car.id}</title>
 				<image
@@ -31,7 +31,7 @@ class CarRenderer {
 	}
 
 
-	render(car, withScans = false, img = "car.png") {
+	render(car, withScans = false, img = "img/car.png") {
 		if(!this.cars.includes(car)) {
 			this.initSprite(car, withScans, img)
 			this.cars.push(car)
