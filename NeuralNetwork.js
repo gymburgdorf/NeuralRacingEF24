@@ -12,7 +12,7 @@ function randomBetween(low, high) {
     return low + (high - low) * Math.round(random(1e9) / 1e7) / 100
 }
 
-class NeuralNetwork {
+export class NeuralNetwork {
     
     constructor(numInputs) {
         this.inputs = []
@@ -106,6 +106,11 @@ class NeuralNetwork {
         for(let i = 0; i < this.biases.length; i++) {
             this.biases[i] += randomBetween(-amount, amount)
         }
+    }
+
+    exportData() {
+        const {structure, weights, biases} = this
+        console.log(JSON.stringify({structure, weights, biases}))
     }
 }
 

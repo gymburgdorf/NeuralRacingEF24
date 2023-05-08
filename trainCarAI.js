@@ -53,6 +53,8 @@ function trainCarAI() {
 		scores = []
 		let carsAlive = true
 		while(carsAlive) {
+			step(steps++)
+			step(steps++)
 			const result = await renderStep(steps)
 			if(result) {
 				carsAlive = false
@@ -86,6 +88,7 @@ function trainCarAI() {
 				car.nn = bestThreeNetworks[i%3].clone()
 				car.nn.randomAdjust(i / (generation+1))
 			}
+			bestThreeNetworks[0].exportData()
 		}
 	}
 

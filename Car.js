@@ -1,7 +1,7 @@
 
 let id = 0
 
-class Car {
+export class Car {
 
 	constructor(track) {
 		this.track = track
@@ -9,6 +9,7 @@ class Car {
 		id += 1
 		this.reset()
 		this.ready = true
+		this.traces = []
 	}
 
 	reset() {
@@ -36,6 +37,7 @@ class Car {
 		
 		this.x = this.x + vx * dt
 		this.y = this.y + vy * dt
+		this.traces.push([this.x, this.y, this.rot])
 	}
 
 	checkCollision() {

@@ -1,4 +1,8 @@
-class CarAI extends Car {
+import {Car} from "./Car.js"
+import {NeuralNetwork} from "./NeuralNetwork.js"
+
+
+export class CarAI extends Car {
 
 	constructor(track) {
 		super(track)

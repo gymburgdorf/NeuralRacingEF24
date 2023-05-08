@@ -1,4 +1,4 @@
-class Track {
+export class Track {
 
 	constructor(points, width) {
 		this.points = points
